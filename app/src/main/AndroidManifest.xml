@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.example.navy.locationsimulator">
+
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+	<uses-permission
+		android:name="android.permission.ACCESS_MOCK_LOCATION"
+		tools:ignore="MockLocation,ProtectedPermissions"></uses-permission>
+
+	<!-- 访问网络，进行地图相关业务数据请求，包括地图数据，路线规划，POI检索等 -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- 获取网络状态，根据网络状态切换进行数据请求网络转换 -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+	<!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+	<application
+		android:allowBackup="true"
+		android:name=".LocationApplication"
+ 		android:icon="@drawable/launch_icon"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme"
+		tools:ignore="GoogleAppIndexingWarning">
+		<activity android:name=".MainActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<!--生命百度地图定位的service-->
+		<service android:name="com.baidu.location.f"
+			android:enabled="true"
+			android:process=":remote"/>
+
+
+		<!--虚拟定位服务-->
+		<service android:name=".services.MockLocationService" />
+		<meta-data
+			android:name="com.baidu.lbsapi.API_KEY"
+			android:value="oyXArMlEl5bCgTCZUAQp4S3S4h6GX110" />
+
+
+		<!-- 快速设置面板服务 -->
+		<service
+			android:name=".services.MyQuickSettingTileService"
+			android:label="位置模拟"
+			android:icon="@drawable/launch_icon"
+			android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+			<intent-filter>
+				<action android:name="android.service.quicksettings.action.QS_TILE" />
+			</intent-filter>
+		</service>
+
+
+	</application>
+
+</manifest>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<!--引入地图图层-->
+		<include
+			layout="@layout/map_view_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="top|start"
+			android:orientation="vertical">
+			<android.support.v7.widget.SearchView
+				android:id="@+id/search_view"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="5dp"
+				android:layout_marginStart="10dp"
+				android:layout_marginEnd="10dp"
+				android:background="#e5ddec"
+				android:queryHint="查询.."
+				android:alpha="0.7"
+				android:clickable="true"/>
+			<ListView
+				android:id="@+id/search_result"
+				android:layout_width="match_parent"
+				android:layout_margin="10dp"
+				android:background="#ddffffff"
+				android:visibility="gone"
+				android:layout_height="wrap_content">
+			</ListView>
+
+
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="20dp"
+			android:layout_marginBottom="30dp"
+			android:layout_gravity="bottom|start"
+			android:orientation="vertical">
+
+			<android.support.design.widget.FloatingActionButton
+				android:id="@+id/move_to_location"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="bottom|center"
+				android:backgroundTint="#06bcd8"
+				android:clickable="true"
+				android:scaleType="center"
+				android:src="@drawable/location_icon"
+				app:elevation="6dp"
+				app:pressedTranslationZ="12dp" />
+
+			<FrameLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp">
+				<android.support.design.widget.FloatingActionButton
+					android:id="@+id/begin_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom|start"
+					android:backgroundTint="#06bcd8"
+					android:clickable="true"
+					android:scaleType="center"
+					android:src="@drawable/begin_flag"
+					app:elevation="6dp"
+					app:pressedTranslationZ="12dp" />
+
+				<android.support.design.widget.FloatingActionButton
+					android:id="@+id/stop_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom|start"
+					android:backgroundTint="#06bcd8"
+					android:clickable="true"
+					android:scaleType="center"
+					android:src="@drawable/stop_flag"
+					android:visibility="invisible"
+					app:elevation="6dp"
+					app:pressedTranslationZ="12dp" />
+			</FrameLayout>
+		</LinearLayout>
+
+
+	</FrameLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
